@@ -1,0 +1,24 @@
+env:
+  browser: false
+  node: true
+  commonjs: true
+  es2021: true
+extends: [ eslint, prettier ]
+parserOptions:
+  ecmaVersion: 12
+rules:
+  'jsdoc/require-jsdoc': off
+  # Needed because we use implicit AWS SDK. Eventually bundle our own, e.g. if moving to V3
+  'node/no-unpublished-require': off
+  # Was barfing on one file somewhere - we should figure out how to make sure ESLint knows to use Node >= 12
+  'node/no-unsupported-features/es-syntax': off
+  no-console: off
+  strict: off
+  no-use-before-define: [ error , { functions : false }]
+  padding-line-between-statements: off
+  no-nested-ternary: off
+  # This was barfing on clock.js - better way to do this?
+  class-methods-use-this: off
+  # These two relate to the github.js file - we should update the regex there and remove this
+  prefer-regex-literals: off
+  require-unicode-regexp: off

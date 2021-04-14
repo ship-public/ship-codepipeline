@@ -1,0 +1,59 @@
+Transform: AWS::Serverless-2016-10-31
+Description: |
+  Ship plugin for AWS CodePipeline.
+  See https://github.com/ship-public/ship-codepipeline
+
+Parameters:
+  ShipOrg:
+    Type: String
+
+  ShipKey:
+    Type: String
+    NoEcho: true
+
+  ShipProjectName:
+    Type: String
+
+  ShipApiUrl:
+    Type: String
+
+  LogRetentionPeriodDays:
+    Type: Number
+    Default: 14
+
+Globals:
+  Function:
+    Runtime: nodejs14.x
+    Timeout: 30
+    MemorySize: 256
+    CodeUri: ./target/prod-lambda.zip
+
+Resources:
+  CodePipelineEventProcessor:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/listener.handler
+      Environment:
+        Variables:
+          SHIP_ORG: !Ref ShipOrg
+          SHIP_KEY: !Ref ShipKey
+          SHIP_PROJECT_NAME: !Ref ShipProjectName
+          SHIP_API_URL: !Ref ShipApiUrl
+      Events:
+        CodePipelineEvent:
+          Type: CloudWatchEvent
+          Properties:
+            Pattern:
+              source: [ aws.codepipeline ]
+              detail-type: [ 'CodePipeline Pipeline Execution State Change' ]
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: 'codepipeline:GetPipelineExecution'
+              Resource: '*'
+
+  CodePipelineEventProcessorLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${CodePipelineEventProcessor}'
+      RetentionInDays: !Ref LogRetentionPeriodDays

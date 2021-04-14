@@ -1,0 +1,28 @@
+{
+  "name": "ship-codepipeline",
+  "version": "0.9.0",
+  "author": "mikebroberts",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-codepipeline": "^3.11.0",
+    "axios": "0.x"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-eslint": "^7.0.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^32.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "prettier": "^2.2.1"
+  },
+  "scripts": {
+    "format": "prettier --check src __tests__",
+    "lint": "eslint --fix-dry-run src __tests__"
+  }
+}
