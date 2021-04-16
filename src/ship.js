@@ -19,17 +19,21 @@ function generateRunEventsMessage(org, key,
         providerEventType: 'runEvents',
         content: {
             events: [{
-                workflow: { projectName, projectId, workflowId, workflowName },
+                workflow: {projectName, projectId, workflowId, workflowName},
                 run: {
                     id: runId,
                     activity, conclusion, dateTime,
                     runNumber, providerRunWebpageUrl
                 },
-                commits: [{
-                    provider: 'GITHUB',
-                    id: commitId,
-                    message: commitMessage
-                }]
+                ...(commitId ? {
+                            commits: [{
+                                provider: 'GITHUB',
+                                id: commitId,
+                                message: commitMessage
+                            }]
+                        }
+                        : {}
+                )
             }]
         }
     }
