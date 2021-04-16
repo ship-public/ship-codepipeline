@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage () {
-   echo 'USAGE: deploy.sh --ship-org=YOUR_SHIP_ORG --ship-key=YOUR_SHIP_KEY --ship-project-name YOUR_SHIP_PROJECT_NAME --cloudformation-bucket CLOUDFORMATION_BUCKET'
+   echo 'USAGE: deploy.sh --ship-org=YOUR_SHIP_ORG --ship-key=YOUR_SHIP_KEY --ship-project-name=YOUR_SHIP_PROJECT_NAME --cloudformation-bucket=CLOUDFORMATION_BUCKET'
    echo 'Optionally, also set the --api-url and/or --stack-name parameters'
    exit 1
 }
