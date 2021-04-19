@@ -79,6 +79,8 @@ async function getCommitDetails(pipeline, executionId) {
 
     // This might throw an error, which will be caught by the calling function
     const codePipelineResponse = await codePipelineClient.send(pipelineExecutionCommand)
+    console.log('Got following execution details from CodePipeline:')
+    console.log(JSON.stringify(codePipelineResponse))
 
     // There's also a 'revisionUrl', which we can add as a commit URL at some point
     const sourceRevision = codePipelineResponse.pipelineExecution.artifactRevisions
