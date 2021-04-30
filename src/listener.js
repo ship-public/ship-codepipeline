@@ -84,10 +84,11 @@ async function getCommitDetails(pipeline, executionId) {
 
     // There's also a 'revisionUrl', which we can add as a commit URL at some point
     const sourceRevision = codePipelineResponse.pipelineExecution.artifactRevisions
-        .find(({ name }) => name === 'SourceCode')
+        .find(({ name }) => name === 'SourceCode' || name === 'SourceArtifact')
 
+    // "SourceArtifact" contains encoded JSON in .revisionSummary, so for now, just ignore
     return sourceRevision
-        ? [sourceRevision.revisionId, sourceRevision.revisionSummary]
+        ? [sourceRevision.revisionId, null]
         : [null, null]
 }
 
