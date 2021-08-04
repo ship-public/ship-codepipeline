@@ -1,6 +1,6 @@
 # AWS CodePipeline support for Ship
 
-Welcome to Ship's [AWS CodePipeline](https://semaphoreci.com/) support! To learn how Ship can help you with your Code
+Welcome to Ship's [AWS CodePipeline](https://aws.amazon.com/codepipeline/) support! To learn how Ship can help you with your Code
 Pipeline workflows, please see [our website](https://www.shipapp.io/integrations/aws-codepipeline).
 
 Ship's support for CodePipeline is implemented as a small service that runs in the same AWS account as your CodePipeline
