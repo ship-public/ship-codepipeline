@@ -20,13 +20,13 @@ Email [hello@shipapp.io](mailto:hello@shipapp.io) to get yours!
 This will be typically be admin-level permissions, but otherwise you'll need permissions to create Lambda functions, IAM
 roles, and log groups.
 
-## Step 4 - Choose a project name per account
+## Step 4: Choose a project name per account
 
 Ship will group all the CodePipelines in an account into one Ship "project", which you'll need a name for. If you only 
 have
 CodePipeline running in one account you can use "code-pipelines" to start, if you wish.
 
-## Step 5 - Installation
+## Step 5: Installation
 
 This plugin needs to be installed as a CloudFormation stack within each account where you run CodePipeline. You can
 install the stack from a local development machine, or from it's own automated workflow - it's up to you.
